@@ -1,19 +1,24 @@
 import './ExpenseItem.css'
+import ExpenseDate from "./ExpenseDate";
 
-function ExpenseItem() {
+const ExpenseItem = (props) => {
+
+    const expenseDate = props.data.date;
+    const expenseTitle = props.data.title;
+    const expenseAmount = props.data.amount;
+
     return (
-
         <div className="card">
             <div className="card-body">
                 <div className="row">
                     <div className="col-md-2">
-                        March 28
+                        <ExpenseDate date={expenseDate}/>
                     </div>
                     <div className="col-md-8">
-                        Car Insurance
+                        {expenseTitle}
                     </div>
                     <div className="col-md-2">
-                        <h2>$2444</h2>
+                        <h2>${expenseAmount}</h2>
                     </div>
                 </div>
             </div>
