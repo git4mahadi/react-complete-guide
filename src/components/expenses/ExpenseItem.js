@@ -1,11 +1,18 @@
+import React, {useState} from "react";
+
 import './ExpenseItem.css'
 import ExpenseDate from "./ExpenseDate";
 
 const ExpenseItem = (props) => {
 
+    const [expenseTitle, setExpenseTitle] = useState(props.data.title);
+
     const expenseDate = props.data.date;
-    const expenseTitle = props.data.title;
     const expenseAmount = props.data.amount;
+
+    const clickHandler = () => {
+        setExpenseTitle('Updated Title !!!');
+    }
 
     return (
         <div className="card">
@@ -14,12 +21,16 @@ const ExpenseItem = (props) => {
                     <div className="col-md-2">
                         <ExpenseDate date={expenseDate}/>
                     </div>
-                    <div className="col-md-8">
+                    <div className="col-md-6">
                         {expenseTitle}
                     </div>
                     <div className="col-md-2">
                         <h2>${expenseAmount}</h2>
                     </div>
+                    <div className="col-md-2">
+                        <div onClick={clickHandler} className="btn btn-success">Click</div>
+                    </div>
+
                 </div>
             </div>
         </div>

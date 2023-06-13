@@ -1,6 +1,7 @@
 import './App.css';
 import ExpenseItem from "./components/expenses/ExpenseItem";
 import Expenses from "./components/expenses/Expenses";
+import NewExpense from "./components/new-expense/NewExpense";
 
 function App() {
     const expenses = [
@@ -28,15 +29,10 @@ function App() {
 
       <div className='row mt-5'>
           <div className='col-lg-8 offset-2'>
-              <div className="card">
-                  <div className="card-body">
-                      <h5 className="card-title">Card title</h5>
-                      <button className="btn btn-success">Add New Item</button>
-                  </div>
-              </div>
+              <NewExpense/>
           </div>
 
-          <div className='col-lg-8 offset-2'>
+          <div className='col-lg-8 offset-2 mt-2'>
               <Expenses expenses={expenses}></Expenses>
           </div>
       </div>
