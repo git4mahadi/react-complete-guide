@@ -2,7 +2,7 @@ import React, {useState} from "react";
 
 import './ExpenseForm.css'
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
 
     const [enteredTitle, setEnteredTitle] = useState('');
     const [enteredAmount, setEnteredAmount] = useState('');
@@ -27,7 +27,11 @@ const ExpenseForm = () => {
             date: new Date(enteredDate)
         };
 
-        console.log(expenseData);
+        props.onSaveExpenseData(expenseData);
+
+        setEnteredTitle('');
+        setEnteredAmount('');
+        setEnteredDate('');
     }
 
 
@@ -35,15 +39,20 @@ const ExpenseForm = () => {
         <form onSubmit={submitHandler}>
             <div className="mb-3">
                 <label className="form-label">Title</label>
-                <input type="text" className="form-control" onChange={titleChangeHandler}/>
+                <input type="text" className="form-control"
+                       value={enteredTitle}
+                       onChange={titleChangeHandler}/>
             </div>
             <div className="mb-3">
                 <label className="form-label">Amount</label>
-                <input type="text" className="form-control" onChange={amountChangeHandler}/>
+                <input type="text" className="form-control"
+                       value={enteredAmount}
+                       onChange={amountChangeHandler}/>
             </div>
             <div className="mb-3">
                 <label className="form-label">Date</label>
-                <input type="date" className="form-control" onChange={dateChangeHandler}/>
+                <input type="date" className="form-control"
+                       value={enteredDate} onChange={dateChangeHandler}/>
             </div>
             <div className="col-12">
                 <button type="submit" className="btn btn-primary">Add Expense</button>

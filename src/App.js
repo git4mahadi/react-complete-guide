@@ -25,11 +25,17 @@ function App() {
             date: new Date(2021, 5, 12),
         },
     ];
+
+    const addExpenseHandler = (expense) => {
+        console.log('App JS');
+        console.log(expense);
+    };
+
   return (
 
       <div className='row mt-5'>
           <div className='col-lg-8 offset-2'>
-              <NewExpense/>
+              <NewExpense onAddExpense={addExpenseHandler}/>
           </div>
 
           <div className='col-lg-8 offset-2 mt-2'>
