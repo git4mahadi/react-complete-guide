@@ -5,30 +5,21 @@ import ExpenseDate from "./ExpenseDate";
 
 const ExpenseItem = (props) => {
 
-    const [expenseTitle, setExpenseTitle] = useState(props.data.title);
-
-    const expenseDate = props.data.date;
-    const expenseAmount = props.data.amount;
-
-    const clickHandler = () => {
-        setExpenseTitle('Updated Title !!!');
-    }
-
     return (
         <div className="card">
             <div className="card-body">
                 <div className="row">
                     <div className="col-md-2">
-                        <ExpenseDate date={expenseDate}/>
+                        <ExpenseDate date={props.data.date}/>
                     </div>
                     <div className="col-md-6">
-                        {expenseTitle}
+                        {props.data.title}
                     </div>
                     <div className="col-md-2">
-                        <h2>${expenseAmount}</h2>
+                        <h2>${props.data.amount}</h2>
                     </div>
                     <div className="col-md-2">
-                        <div onClick={clickHandler} className="btn btn-success">Click</div>
+                        <div className="btn btn-success">Click</div>
                     </div>
 
                 </div>
