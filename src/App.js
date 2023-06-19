@@ -3,6 +3,7 @@ import './App.css';
 import Expenses from "./components/expenses/Expenses";
 import NewExpense from "./components/new-expense/NewExpense";
 import {useState} from "react";
+import ExpenseForm from "./components/new-expense/ExpenseForm";
 
 const DUMMY_EXPENSES = [
     {
@@ -30,33 +31,19 @@ const DUMMY_EXPENSES = [
 const App = () => {
 
     const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
-    const [isShowingForm, setIsShowingForm] = useState(false);
 
-    const addExpenseHandler = (expense) => {
+    const onSaveExpenseData = (expense) => {
        setExpenses((preExpenses) => {
            return [expense, ...preExpenses]
        });
     };
 
-    const onClickAddNewExpense= () => {
-        setIsShowingForm(true);
-    }
-
 
   return (
       <div className='row mt-5'>
 
-          <div className='col-lg-8 offset-2'>
-              {!isShowingForm && (<div className='card'>
-                  <div className='card-body'>
-                      <button className='btn btn-primary btn-lg'
-                              onClick={onClickAddNewExpense}>Add New Expense</button>
-                  </div>
-              </div>) }
+          <ExpenseForm onSaveExpenseData={onSaveExpenseData}/>
 
-              {isShowingForm && (<NewExpense onAddExpense={addExpenseHandler}/>)}
-
-          </div>
           <div className='col-lg-8 offset-2 mt-2'>
               <Expenses expenses={expenses} />
           </div>
