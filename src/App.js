@@ -30,6 +30,7 @@ const DUMMY_EXPENSES = [
 const App = () => {
 
     const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
+    const [isShowingForm, setIsShowingForm] = useState(false);
 
     const addExpenseHandler = (expense) => {
        setExpenses((preExpenses) => {
@@ -37,13 +38,24 @@ const App = () => {
        });
     };
 
-  return (
+    const onClickAddNewExpense= () => {
+        setIsShowingForm(true);
+    }
 
+
+  return (
       <div className='row mt-5'>
 
           <div className='col-lg-8 offset-2'>
-              <NewExpense
-                  onAddExpense={addExpenseHandler}/>
+              {!isShowingForm && (<div className='card'>
+                  <div className='card-body'>
+                      <button className='btn btn-primary btn-lg'
+                              onClick={onClickAddNewExpense}>Add New Expense</button>
+                  </div>
+              </div>) }
+
+              {isShowingForm && (<NewExpense onAddExpense={addExpenseHandler}/>)}
+
           </div>
           <div className='col-lg-8 offset-2 mt-2'>
               <Expenses expenses={expenses} />

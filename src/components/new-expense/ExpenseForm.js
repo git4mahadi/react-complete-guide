@@ -34,7 +34,6 @@ const ExpenseForm = (props) => {
         setEnteredDate('');
     }
 
-
     return (
         <form onSubmit={submitHandler}>
             <div className="mb-3">
@@ -54,8 +53,9 @@ const ExpenseForm = (props) => {
                 <input type="date" className="form-control"
                        value={enteredDate} onChange={dateChangeHandler}/>
             </div>
-            <div className="col-12">
-                <button type="submit" className="btn btn-primary">Add Expense</button>
+            <div className="col-12 text-lg-end">
+                <button type="button" className="btn btn-info">Cancel</button>
+                <button type="submit" className="btn btn-primary mx-2">Add Expense</button>
             </div>
         </form>
     );
